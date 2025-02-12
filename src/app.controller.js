@@ -7,7 +7,7 @@ import { globalErrorHandling } from "./utlities/errorHandling.js";
 import { rateLimit } from 'express-rate-limit'
 import path from "path";
 const limiter = rateLimit({
-    limit: 6,
+    limit: 20,
     windowMs: 2 * 60 * 1000,
     handler: (req, res, next) => {
         return next(new Error("Too many requests, please try again after 2 minutes",{cause:429}))
