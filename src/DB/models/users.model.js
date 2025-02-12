@@ -105,8 +105,7 @@ const userSchema = new mongoose.Schema({
     tempEmail: {
         type: String,
         unique: true,
-        lowercase: true,
-        match: /^(?!.*\.{2})[a-zA-Z0-9][a-zA-Z0-9#$%&\*\+-/=\?\_`|~]*@[a-zA-Z0-9][a-zA-Z0-9-_.]*\.[a-zA-Z]{2,4}$/
+        lowercase: true
     },
     otpNewEmail: String,
     changeEmailOtp: String,
