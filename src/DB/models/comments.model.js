@@ -1,0 +1,46 @@
+import mongoose from "mongoose"
+const commentSchema = new mongoose.Schema({
+    content:{
+        type:String,
+        required:true,
+        trim:true,
+        minLength:3
+    },
+    userId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required:true
+    },
+    refId:{
+        type:mongoose.Schema.Types.ObjectId,
+        refPath:"onModel",
+    },
+    onModel:{
+        type:String,
+        enum:["post","comment"],
+        required:true
+    },
+    deletedBy:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    },
+    isDeleted:Boolean,
+    attachments:[{
+        secure_url:String,
+        public_id:String
+    }],
+    likes:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User"
+    }]
+},{
+    timestamps:true,
+    toJSON:{virtuals:true},
+    toObject:{virtuals:true}
+})
+commentSchema.virtual("reply",{
+    ref:"Comments",
+    localField:"_id",
+    foreignField:"refId"
+})
+export const commentModel = mongoose.models.Comments || mongoose.model("Comments",commentSchema);
