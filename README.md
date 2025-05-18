@@ -27,7 +27,7 @@ You can access it directly or test it using tools like Postman.
 - 🍃 **MongoDB + Mongoose** – Database
 - 🔐 **JWT** – Authentication
 - 🧪 **Postman** – API testing
-- 📁 **Multer / Cloudinary** – (if used) for image upload (Optional)
+- 📁 **Multer / Cloudinary** – for image upload (Optional)
 
 ---
 
